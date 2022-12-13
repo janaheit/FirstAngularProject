@@ -1,0 +1,7 @@
+<a *ngIf="!item.callback" class="nav-link" [routerLink]="item.route">
+  {{ item.value }}
+</a>
+
+<a *ngIf="item.callback" class="nav-link" (click)="item.callback()">
+  {{ item.value }}
+</a>

@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user.service";
-import {User} from "../../../models/user.model";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
+import {ButtonType, TableConfig} from "../../../shared/table/models/table-config.model";
+import {Entity} from "../../../models/entity.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-list',
@@ -10,24 +10,44 @@ import {MatPaginator} from "@angular/material/paginator";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  users: Array<User>;
-  displayColumns: string[] = ['id', 'username', 'email']
-  dataSource = new MatTableDataSource<User>();
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  tableConfig: TableConfig;
 
   constructor(
     private userService: UserService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.userService.get()
-      .subscribe((users) => {
-        this.users = users;
-        this.dataSource.data = this.users;
-      });
-
-    this.dataSource.paginator = this.paginator;
+    this.tableConfig = {
+      columns: [
+        {
+          columnName: 'Id',
+          value: 'id'
+        },
+        {
+          columnName: 'Username',
+          value: 'username'
+        },
+        {
+          columnName: 'Email',
+          value: 'email'
+        },
+      ],
+      actions: [
+        {
+          actionName: 'edit',
+          actionCb: (data: Entity) => {
+            this.router.navigate(['/user', data.id, 'edit']);
+          },
+          type: ButtonType.SUCCESS
+        }
+      ],
+      findDataCb: () => this.userService.get(),
+      create: {
+        actionName: 'Create user',
+        actionCb: () => this.router.navigate(['/user/add'])
+      }
+    }
   }
 
 }
