@@ -4,12 +4,14 @@ import {MaterialModule} from "./material/material.module";
 import {NavbarModule} from "./navbar/navbar.module";
 import { InputComponent } from './input/input.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LineDataComponent } from './line-data/line-data.component';
 
 
 
 @NgModule({
   declarations: [
-    InputComponent
+    InputComponent,
+    LineDataComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     NavbarModule,
     FormsModule,
     ReactiveFormsModule,
+    InputComponent,
+    LineDataComponent,
   ]
 })
 export class SharedModule { }

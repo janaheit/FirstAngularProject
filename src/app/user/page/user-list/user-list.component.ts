@@ -40,9 +40,16 @@ export class UserListComponent implements OnInit {
             this.router.navigate(['/user', data.id, 'edit']);
           },
           type: ButtonType.SUCCESS
-        }
+        },
+        {
+          actionName: 'detail',
+          actionCb: (data: Entity) => {
+            this.router.navigate(['/user', data.id, 'detail']);
+          },
+          type: ButtonType.SUBMIT
+        },
       ],
-      findDataCb: () => this.userService.get(),
+      findDataCb: () => this.userService.findAll(),
       create: {
         actionName: 'Create user',
         actionCb: () => this.router.navigate(['/user/add'])

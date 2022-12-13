@@ -1,0 +1,21 @@
+.line-div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bold-value {
+  font-weight: bold;
+}
+
+.ul-line-data {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  padding-left: 25px;
+}

@@ -18,14 +18,14 @@ export class UserViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let id = this.activatedRoute.snapshot.params[''];
+    let id = this.activatedRoute.snapshot.params['id'];
 
     if(isNaN(id))
     {
       this.router.navigate(['/']);
     }
 
-    this.userService.getById(id)
+    this.userService.find(id)
       .subscribe((user) =>
       {
         this.user = user;

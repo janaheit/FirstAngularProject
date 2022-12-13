@@ -1,1 +1,13 @@
-<p>user-form works!</p>
+<div class="container">
+  <app-input type="text" label="username" [control]="$any(entityForm.controls['username'])"></app-input>
+  <app-input *ngIf="!edit" type="password" label="password" [control]="$any(entityForm.controls['password'])"></app-input>
+  <app-input type="text" label="email" [control]="$any(entityForm.controls['email'])"></app-input>
+  <app-input type="text" label="city" [control]="$any(getAddressGroup.controls['city'])"></app-input>
+  <app-input type="text" label="country" [control]="$any(getAddressGroup.controls['country'])"></app-input>
+  <app-input type="text" label="state" [control]="$any(getAddressGroup.controls['state'])"></app-input>
+  <app-input type="text" label="street" [control]="$any(getAddressGroup.controls['street'])"></app-input>
+  <app-input type="number" label="number" [control]="$any(getAddressGroup.controls['number'])"></app-input>
+  <app-input type="number" label="zip code" [control]="$any(getAddressGroup.controls['zipCode'])"></app-input>
+  <hr/>
+  <button class="btn btn-primary" (click)="submit()">Submit</button>
+</div>

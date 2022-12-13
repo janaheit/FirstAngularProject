@@ -63,7 +63,7 @@ export class TableComponent implements OnInit {
       case ButtonType.DANGER:
         return 'btn btn-danger';
       case ButtonType.SUBMIT:
-        return 'btn btn-submit';
+        return 'btn btn-primary';
       case ButtonType.SUCCESS:
         return 'btn btn-success';
       case ButtonType.WARNING:

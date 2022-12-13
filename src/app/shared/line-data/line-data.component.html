@@ -1,0 +1,19 @@
+<div class="line-div">
+  <p class="bold-value text-right m-r-10">
+    {{boldValue}} :
+  </p>
+  <span>
+    <ng-container *ngIf="items">
+      <ul *ngIf="items && items.length > 0" [class]="textClass + ' ul-line-data'">
+        <li *ngFor="let item of items">
+          {{ prop ? item[prop] : item }}
+        </li>
+      </ul>
+    </ng-container>
+    <ng-container *ngIf="!items">
+      <p [class]="textClass">
+        <span>{{textValueComputed}}</span>
+      </p>
+    </ng-container>
+  </span>
+</div>

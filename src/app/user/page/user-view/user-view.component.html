@@ -1,1 +1,5 @@
-<p>user-view works!</p>
+<div *ngIf="user" class="container">
+  <app-line-data boldValue="Username" [textValue]="user.username"></app-line-data>
+  <app-line-data boldValue="Email" [textValue]="user.email"></app-line-data>
+  <app-line-data boldValue="Roles" [items]="user.roles"></app-line-data>
+</div>

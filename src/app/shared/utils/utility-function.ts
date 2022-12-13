@@ -4,6 +4,7 @@
  */
 import {FormGroup} from "@angular/forms";
 import {Entity} from "../../models/entity.model";
+import {Logger} from "../../services/logger.service";
 
 export function propertiesToValue(properties: string, obj: object) {
   let propList = properties.split('.');
@@ -24,13 +25,21 @@ export function propertiesToValue(properties: string, obj: object) {
 
 export function parseFormGroup(formGroup: FormGroup, entity: Entity)
 {
-  for(const attribute in formGroup)
+  parseFormValues(formGroup.value, entity);
+}
+
+function parseFormValues(values: any, entity: Entity)
+{
+  for(const value in values)
   {
-    if(formGroup[attribute] instanceof FormGroup)
+    Logger.log('value', value);
+    Logger.log('value type', typeof values[value]);
+    if(typeof values[value] === 'object')
     {
-      parseFormGroup(formGroup[attribute], entity[attribute]);
+      entity[value] = {};
+      parseFormValues(values[value], entity[value]);
     } else {
-      entity[attribute] = formGroup[attribute];
+      entity[value] = values[value];
     }
   }
 }

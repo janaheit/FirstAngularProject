@@ -42,7 +42,7 @@ export class AuthService {
       user.token = sessionStorage.getItem('token');
       this.processToken(user);
       Logger.log('Connected user', this.connectUser);
-      this.userService.getById(this.connectUser.id)
+      this.userService.find(this.connectUser.id)
         .subscribe((user) => {
           user.token = this.connectUser.token;
           this.connectUser = user;

@@ -20,24 +20,24 @@ export abstract class Crud<T>
       this.config = config;
     }
 
-    get(): Observable<Array<T>>
+    findAll(): Observable<Array<T>>
     {
       // localhost/api/user
       return this.http.get<Array<T>>(environment.api.url + this.config.many);
     }
 
-    getById(id: number)
+    find(id: number)
     {
       // localhost/api/user/1
       return this.http.get<T>(environment.api.url + this.config.single(id))
     }
 
-    post(entity: T)
+    insert(entity: T)
     {
       return this.http.post<T>(environment.api.url + this.config.many, entity);
     }
 
-    put(entity: T)
+    update(entity: T)
     {
       return this.http.put<T>(environment.api.url + this.config.many, entity);
     }
