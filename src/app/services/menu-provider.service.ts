@@ -55,6 +55,12 @@ export class MenuProviderService {
               privileges: NavbarPrivilege.AUTH,
             },
             {
+              value: 'Register',
+              route: '/user/add',
+              itemType: NavbarItemType.BUTTON,
+              privileges: NavbarPrivilege.DISCONECTED
+            },
+            {
               value: 'Login',
               route: '/login',
               itemType: NavbarItemType.BUTTON,

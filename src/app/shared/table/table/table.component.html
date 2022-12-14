@@ -1,5 +1,5 @@
 <div class="table-container">
-  <ng-container *ngIf="tableConfig.create">
+  <ng-container *ngIf="tableConfig.create && tableConfig.create.canCreate">
     <button class="btn btn-primary action-btn-class" (click)="tableConfig.create.actionCb()">
       {{ tableConfig.create.actionName }}
     </button>
@@ -16,7 +16,9 @@
         <div class="btn-group">
           <button *ngFor="let action of tableConfig.actions"
                   [class]="getClass(action)"
-                  (click)="action.actionCb(element)">{{ action.actionName }}</button>
+                  (click)="action.actionCb(element)" [disabled]="action.disabledCb && action.disabledCb(element)">
+            {{ action.actionName }}
+          </button>
         </div>
       </td>
     </ng-container>

@@ -3,6 +3,7 @@ import {UserService} from "../../../services/user.service";
 import {ButtonType, TableConfig} from "../../../shared/table/models/table-config.model";
 import {Entity} from "../../../models/entity.model";
 import {Router} from "@angular/router";
+import {AuthService, RightEnum} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-user-list',
@@ -15,6 +16,7 @@ export class UserListComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +54,8 @@ export class UserListComponent implements OnInit {
       findDataCb: () => this.userService.findAll(),
       create: {
         actionName: 'Create user',
-        actionCb: () => this.router.navigate(['/user/add'])
+        actionCb: () => this.router.navigate(['/user/add']),
+        canCreate: this.authService.hasRight(RightEnum.ADMIN)
       }
     }
   }

@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {User} from "../../../models/user.model";
 import {AuthService, RightEnum} from "../../../services/auth.service";
 import {MenuProviderService} from "../../../services/menu-provider.service";
+import {Logger} from "../../../services/logger.service";
 
 @Component({
   selector: 'app-navbar',
@@ -33,9 +34,13 @@ export class NavbarComponent implements OnInit {
       case NavbarPrivilege.DISCONECTED:
         return !this.authService.getUser;
       case NavbarPrivilege.AUTH:
-        return this.authService.getUser;
+        Logger.log('auth', {
+          user: !!this.authService.getUser  && this.authService.hasRight(RightEnum.USER),
+          // right: this.authService.hasRight(RightEnum.USER)
+        });
+        return !!this.authService.getUser && this.authService.hasRight(RightEnum.USER);
       case NavbarPrivilege.ADMIN:
-        return this.authService.hasRight(RightEnum.ADMIN);
+        return this.authService.getUser && this.authService.hasRight(RightEnum.ADMIN);
       default:
         return false;
     }

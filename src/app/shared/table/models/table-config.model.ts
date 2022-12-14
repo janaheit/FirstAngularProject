@@ -34,12 +34,14 @@ export interface RowAction
   actionName: string;
   actionCb: (data: Entity) => any;
   type: ButtonType;
+  disabledCb?: (data: Entity) => boolean;
 }
 
 export interface CreateAction
 {
   actionName: string;
   actionCb: () => any;
+  canCreate: boolean;
 }
 
 export enum ButtonType
