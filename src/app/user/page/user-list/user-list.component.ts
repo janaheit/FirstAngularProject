@@ -4,6 +4,7 @@ import {ButtonType, TableConfig} from "../../../shared/table/models/table-config
 import {Entity} from "../../../models/entity.model";
 import {Router} from "@angular/router";
 import {AuthService, RightEnum} from "../../../services/auth.service";
+import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-user-list',
@@ -33,6 +34,16 @@ export class UserListComponent implements OnInit {
         {
           columnName: 'Email',
           value: 'email'
+        },
+        {
+          columnName: 'Roles',
+          value: 'roles',
+          valueCb: (data: Entity) =>
+          {
+            const user: User = data as User;
+
+            return user.roles.join(' | ')
+          }
         },
       ],
       actions: [

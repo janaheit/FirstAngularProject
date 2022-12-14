@@ -28,7 +28,7 @@ export class UserFormComponent implements OnInit {
 
     this.entityForm = this.fb.group({
       username: [null, [Validators.required, Validators.maxLength(255)]],
-      password: [null, [Validators.required]],
+      password: [null, !this.edit ? [Validators.required] : null],
       // passwordConfirm: [null, [Validators.required]],
       email: [null, [Validators.required]],
       address: this.fb.group({
@@ -65,10 +65,20 @@ export class UserFormComponent implements OnInit {
     parseFormGroup(this.entityForm, this.user);
     Logger.log('user', this.user);
 
-    this.userService.insert(this.user)
-      .subscribe(() =>
-      {
-        this.router.navigate(['/user/', this.user.id]);
-      });
+    if(this.edit)
+    {
+      this.userService.update(this.user)
+        .subscribe(() =>
+        {
+          this.router.navigate(['/user/', this.user.id, 'detail']);
+        });
+    } else
+    {
+      this.userService.insert(this.user)
+        .subscribe(() =>
+        {
+          this.router.navigate(['/user']);
+        });
+    }
   }
 }

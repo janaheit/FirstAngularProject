@@ -13,6 +13,7 @@ export class LineDataComponent implements OnInit {
   @Input() prop: string;
   textValueComputed: string;
   textClass: string;
+  
   constructor() { }
 
   ngOnInit(): void {
