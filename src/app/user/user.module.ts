@@ -17,11 +17,14 @@ import { UserComponent } from './page/user/user.component';
     UserFormComponent,
     UserComponent
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        UserRoutingModule,
-        AppTableModule,
-    ]
+  exports: [
+    UserFormComponent
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    UserRoutingModule,
+    AppTableModule,
+  ]
 })
 export class UserModule { }

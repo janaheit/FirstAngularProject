@@ -1,5 +1,6 @@
 import {Entity} from "./entity.model";
 import {Address} from "./address.model";
+import {UserProduct} from "./user-product";
 
 export class User extends Entity
 {
@@ -15,4 +16,5 @@ export class User extends Entity
   accountNonLocked: boolean;
 
   address: Address;
+  //basket: UserProduct[] = [];
 }

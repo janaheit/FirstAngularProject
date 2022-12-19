@@ -1,0 +1,6 @@
+<div *ngIf="product" class="container">
+  <app-line-data boldValue="ID" [textValue]="product.id+''"></app-line-data>
+  <app-line-data boldValue="Name" [textValue]="product.label"></app-line-data>
+  <app-line-data boldValue="Price" [textValue]="product.price+''"></app-line-data>
+  <app-line-data boldValue="Stock" [textValue]="product.quantity+''"></app-line-data>
+</div>

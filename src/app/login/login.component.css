@@ -1,0 +1,10 @@
+.custom-class {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.custom-class mat-form-field {
+  width : 300px;
+}

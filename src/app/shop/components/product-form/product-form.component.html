@@ -1,0 +1,22 @@
+<div class="container">
+  <app-input type="text" label="label" [control]="$any(entityForm.controls['label'])"></app-input>
+  <app-input type="number" label="price" [control]="$any(entityForm.controls['price'])"></app-input>
+  <app-input type="number" label="quantity" [control]="$any(entityForm.controls['quantity'])"></app-input>
+  <!--<app-input type="number" label="category id" [control]="$any(getCategoryGroup.controls['id'])"></app-input>
+  <app-input type="text" label="category label" [control]="$any(getCategoryGroup.controls['label'])"></app-input>-->
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select *ngIf="categories" [formControl]="$any(entityForm.controls['category'])">
+        <mat-option *ngFor="let cat of categories" [value]="cat.id">
+          {{cat.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </p>
+
+  <button class="btn btn-primary" (click)="submit()">Submit</button>
+
+</div>
